@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Template Synth</title>
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/platform.js"></script>
+    <link rel="import" href="webcomponents/polymer.html">
+    <link rel="import" href="webcomponents/controls.html">
+
+	<script src="js/voice_sampler.js"></script>
+	<script src="js/voicepool.js"></script>
+	<script src="js/synth.js"></script>
+	<script src="js/control.js"></script>
+	<script src="js/webmidilink.js"></script>
+	<script src="js/WebMIDIAPI.js"></script>
+	<script src="js/midiinterface.js"></script>
+	<script src="js/keyboard.js"></script>
+
+	<style>
+		body { background-color: #eee; }
+
+		#panel {
+			color: #bbb;
+			font-size: 10px;
+			position:relative;
+			background: linear-gradient(top, #444448, #111118);
+			background: -webkit-linear-gradient(top, #444448, #111118);
+			background: -moz-linear-gradient(top, #444448, #111118);
+			background: -ms-linear-gradient(top, #444448, #111118);
+			border-radius: 5px;
+			box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+			width: 720px;
+			height: 200px;
+			margin: 30px 40px;
+			padding: 0px;
+		}
+
+		#key   { position:absolute; left:  50px; top:110px; }
+
+		#txt1 { position:absolute; left:  90px; top: 20px; }
+		#mvol { position:absolute; left: 100px; top: 40px; }
+
+		#txt2   { position:absolute; left: 520px; top: 20px; }
+		#midi_device { position:absolute; left: 520px; top: 40px; width: 160px; height: 20px; fontSize:12px; }
+		#midi_signal { position:absolute; left: 595px; top: 21px; color: #222; fontSize:12px; }
+
+	</style>
+</head>
+<body>
+	<div id="panel">
+		<webaudio-keyboard id="key" width="650" height="90" min="36" keys="61" ></webaudio-keyboard>
+
+		<div id="txt1">Volume</div>
+		<webaudio-knob id="mvol" diameter="20" value="50"></webaudio-knob>
+
+		<div id="txt2">MIDI IN device</div>
+		<select id="midi_device"></select>
+		<div id="midi_signal">■</div>
+	</div>
+
+</body>
+</html>
