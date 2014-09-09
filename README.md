@@ -13,10 +13,10 @@ js/voice.jsを参考に拡張してください。
 js/voice_sampler.jsはプレイバックサンプラーのvoice、js/voice_saw.jsはノコギリ波を重ねたvoiceの実装例です。
 
 ##Demo Page
-http://aikelab.net/templatesynth/
-http://aikelab.net/templatesynth/sampler.html
+http://aikelab.net/templatesynth/  
+http://aikelab.net/templatesynth/sampler.html  
 http://aikelab.net/templatesynth/sawsynth.html
 
 ##Credit
-TemplateSynth is licenced under MIT License. Copyright 2014, aike (@aike1000)
+TemplateSynth is licenced under MIT License. Copyright 2014, aike (@aike1000)  
 UIに[g200kg/web-audio-controls](https://github.com/g200kg/webaudio-controls)を使用しています。
