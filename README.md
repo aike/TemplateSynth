@@ -11,7 +11,7 @@ JavaScriptでポリフォニックシンセサイザーを作るときのテン�
 js/voice.jsを参考に以下のメソッドを実装してください。
 
 | メソッド名 | 処理内容 |
-|:---------:|:---------:|
+|----------|:-------:|
 |Voice#noteOn(note, velocity) |発音開始|
 |Voice#changeNotet(note) |発音中に音程変更|
 |Voice#noteOff() |発音終了|
