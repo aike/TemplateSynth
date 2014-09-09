@@ -19,7 +19,7 @@ $(function() {
 	})
 	.change(function(e) {
 		synth.setParam(synth.param.MasterVolume, e.target.value);
-		console.log($('#mvol')[0].value);
+		//console.log($('#mvol')[0].value);
 	});
 
 });

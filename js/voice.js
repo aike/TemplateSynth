@@ -1,4 +1,4 @@
-var Oscillator = function(ctx) {
+var Voice = function(ctx) {
 	this.ctx = ctx;
 	this.next_node = null;
 	this.noteNoToFrequency = function(noteno) {
@@ -6,24 +6,24 @@ var Oscillator = function(ctx) {
 	}
 }
 
-Oscillator.prototype.connect = function(node) {
+Voice.prototype.connect = function(node) {
 	this.next_node = node;
 }
 
-Oscillator.prototype.noteOn = function(note, velocity) {
+Voice.prototype.noteOn = function(note, velocity) {
 	this.osc = this.ctx.createOscillator();
 	this.osc.frequency.value = this.noteNoToFrequency(note);
 	this.osc.connect(this.next_node);
 	this.osc.start(0);
 }
 
-Oscillator.prototype.changeNote = function(note) {
+Voice.prototype.changeNote = function(note) {
 	this.osc.frequency.value = this.noteNoToFrequency(note);
 }
 
-Oscillator.prototype.noteOff = function() {
+Voice.prototype.noteOff = function() {
 	this.osc.stop(0);
 }
 
-Oscillator.prototype.setParam = function(param_id, val) {
+Voice.prototype.setParam = function(param_id, val) {
 }

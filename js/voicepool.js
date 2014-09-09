@@ -5,7 +5,7 @@ var OscPool = function(ctx, voice) {
 	this.osc_note = new Array(voice);
 	this.osc_busy = new Array(voice);
 	for (var i = 0; i < this.osc.length; i++) {
-		this.osc[i] = new Oscillator(this.ctx);
+		this.osc[i] = new Voice(this.ctx);
 		this.osc_busy[i] = false;
 	}
 	this.next_node = null;
