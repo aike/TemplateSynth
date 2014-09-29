@@ -13,7 +13,10 @@ var MidiInterface = function(initCallback) {
 	this.onMidiSuccess = function(midiAccess) {
 		self.midi = midiAccess;
 		self.getInterfaceList();
-		self.setPort(0);
+		if ((typeof(self.midi.inputs) != "function"))  // New MIDI inputs implementation code
+			self.setPort(self.inportList[0].value);
+		else
+			self.setPort(0);
 		if (self.initCallback)
 			self.initCallback(self.inportList);
 	};
@@ -27,6 +30,12 @@ var MidiInterface = function(initCallback) {
 ////////////////// Top Level API ////////////////////////
 
 MidiInterface.prototype.getInterfaceList = function() {
+	if ((typeof(this.midi.inputs) != "function")) {  // New MIDI inputs implementation code
+		for (var input of this.midi.inputs.values()) {
+			this.inportList.push({value: input.id, text:input.name});
+		}
+		return;
+	}
 	var inputs = this.midi.inputs();
 	for (var i = 0; i < inputs.length; i++) {
 		this.inportList.push({value: i.toString(10), text:inputs[i].name});
@@ -34,6 +43,17 @@ MidiInterface.prototype.getInterfaceList = function() {
 }
 
 MidiInterface.prototype.setPort = function(n) {
+	if ((typeof(this.midi.inputs) != "function")) {  // New MIDI inputs implementation code
+		if (this.in_port !== null)
+			this.in_port.onmidimessage = null;
+
+		var self = this;
+		this.onmidimessage = function(e) { self.receive(e); };
+		this.in_port = this.midi.inputs.get(n);
+		this.in_port.onmidimessage = this.onmidimessage;
+	    return;
+	}
+
 	if (this.in_port !== null)
 		this.midi.inputs()[this.in_port].onmidimessage = function() {};
 	this.in_port = n;
